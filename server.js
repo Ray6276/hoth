@@ -406,9 +406,7 @@ app.post("/order/complete", function(req, resp) {
 // -----------------------Admin operation---------------//
 app.post("/change/price",function(req,resp){
     //pg.connect(dbURL,function(err,client,done){
-        if(err){
-            console.log(err)
-        }
+        
         client.query("UPDATE hoth_items SET price = $1 WHERE item_code = $2",[req.body.price,req.body.item],function(err,result){
             //done();
 
@@ -424,9 +422,7 @@ app.post("/change/price",function(req,resp){
 
 app.post("/adminItems", function(req,resp){
     //pg.connect(dbURL,function(err,client,done){
-        if(err){
-            console.log(err)
-        }
+        
         client.query("INSERT INTO hoth_items (item_code,category,description,item_name,filename,price) VALUES($1,$2,$3,$4,$5,$6)",[req.body.itemCode,req.body.category,req.body.desc,req.body.name,req.body.fileName,req.body.price],function(err,result){
             //done();
             if(err){
